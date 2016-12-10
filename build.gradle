@@ -9,7 +9,7 @@ repositories {
 /* Mavenリポジトリに登録するとき必要な情報 */
 group            = 'net.tyfunction' // packageの名前とか
 archivesBaseName = 'groovy-lib'     // ライブラリの名前とか
-version          = '0.1.0'          // バージョン
+version          = '0.1.1'          // バージョン
 
 dependencies {
   compile 'org.codehaus.groovy:groovy-all:2.4.7'
