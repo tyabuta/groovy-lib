@@ -1,0 +1,61 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+repositories {
+    jcenter()
+}
+
+/* Mavenリポジトリに登録するとき必要な情報 */
+group            = 'net.tyfunction' // packageの名前とか
+archivesBaseName = 'groovy-lib'     // ライブラリの名前とか
+version          = '0.1.0'          // バージョン
+
+dependencies {
+  compile 'org.codehaus.groovy:groovy-all:2.4.7'
+}
+
+
+/* JavaDoc作成用のタスク */
+task javadocJar(type: Jar, dependsOn: groovydoc) {
+  classifier = 'javadoc'
+  from groovydoc.destinationDir
+}
+
+/* Source作成用のタスク */
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  classifier = 'sources'
+}
+
+/* Bintrayに登録するのに必要なJar */
+artifacts {
+  archives jar
+  archives javadocJar
+  archives sourcesJar
+}
+
+/* MavenプラグインのArchive作成処理に必要な情報を書く */
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: "file:${buildDir}")
+      pom {
+        project {
+          inceptionYear '2016'
+          packaging 'jar'
+          licenses {
+            license {
+              name 'The MIT License'
+              url 'http://opensource.org/licenses/MIT'
+              distribution 'repo'
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
