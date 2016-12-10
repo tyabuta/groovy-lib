@@ -1,7 +1,11 @@
 
 build
 .gradle
+.idea
 
+groovy-lib.iml
+groovy-lib.ipr
+groovy-lib.iws
 
 .DS_Store
 
