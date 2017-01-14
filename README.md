@@ -4,7 +4,7 @@ groovy-lib
 
 ### How to build and package for upload files.
 
-VERSION ... ex.) 0.1.1
+VERSION ... e.g.) 0.1.1
 ```
 ./gradlew uploadArchives
 sh ./tools/package.sh VERSION
